@@ -1,0 +1,32 @@
+//DESIGN CODE
+module fullsubtractor(
+    input a,b,
+    input bin,
+    output d,bout
+    );
+xor(w1,a,b);
+and(w2,!a,b);
+xor(d,w1,bin);
+and(w3,!w1,bin);
+or(bout,w2,w3);    
+endmodule
+
+
+
+
+//TEST BENCH
+module fullsubtractor_tb;
+reg a,b,bin;
+wire d,bout;
+fullsubtractor uut(.a(a),.b(b),.bin(bin),.d(d),.bout(bout));
+initial begin
+a=0;b=0;bin=0;#100;
+a=0;b=0;bin=1;#100;
+a=0;b=1;bin=0;#100;
+a=0;b=1;bin=1;#100;
+a=1;b=0;bin=0;#100;
+a=1;b=0;bin=1;#100;
+a=1;b=1;bin=0;#100;
+a=1;b=1;bin=1;#100;
+end
+endmodule
